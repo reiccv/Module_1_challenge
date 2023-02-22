@@ -19,15 +19,25 @@ loan_costs = [500, 600, 200, 1000, 450]
 # Print the number of loans from the list
 # YOUR CODE HERE!
 
+total_number_of_loans = len(loan_costs)
+print(f"The total number of loans is: {total_number_of_loans}")
+
 # What is the total of all loans?
 # @TODO: Use the `sum` function to calculate the total of all loans in the list.
 # Print the total value of the loans
 # YOUR CODE HERE!
 
+total_sum_of_loans = sum(loan_costs)
+print(f"The total sum of the loans is:{total_sum_of_loans}")
+
+
 # What is the average loan amount from the list?
 # @TODO: Using the sum of all loans and the total number of loans, calculate the average loan price.
 # Print the average loan amount
 # YOUR CODE HERE!
+
+average_of_loans = (total_sum_of_loans / total_number_of_loans)
+print(f"The total average of the loans is: {average_of_loans}")
 
 """Part 2: Analyze Loan Data.
 
@@ -64,13 +74,19 @@ loan = {
 # Print each variable.
 # YOUR CODE HERE!
 
-
+future_value = loan.get("future_value")
+remaining_months = loan.get("remaining_months")
+print(f"The Future value is: {future_value}")
+print(f"The total remaining months is: {remaining_months}")
 # @TODO: Use the formula for Present Value to calculate a "fair value" of the loan.
 # Use a minimum required return of 20% as the discount rate.
 #   You'll want to use the **monthly** version of the present value formula.
 #   HINT: Present Value = Future Value / (1 + Discount_Rate/12) ** remaining_months
 
 # YOUR CODE HERE!
+discount_rate = .20
+present_value = (future_value / ((1 + discount_rate)/12) ** remaining_months)
+print(f"The present value is: {present_value}")
 
 # If Present Value represents what the loan is really worth, does it make sense to buy the loan at its cost?
 # @TODO: Write a conditional statement (an if-else statement) to decide if the present value represents the loan's fair value.
@@ -78,6 +94,12 @@ loan = {
 #    Else, the present value of the loan is less than the loan cost, then print a message that says that the loan is too expensive and not worth the price.
 # YOUR CODE HERE!
 
+
+if present_value >= loan_costs:
+    print(f"The loan is worth at least the cost to buy it.")
+
+else:
+    print(f"The loan is too expensive and not worth the price.")
 
 """Part 3: Perform Financial Calculations.
 
@@ -150,15 +172,16 @@ loans = [
 
 # @TODO: Create an empty list called `inexpensive_loans`
 # YOUR CODE HERE!
-
+inexpensive_loans = []
 # @TODO: Loop through all the loans and append any that cost $500 or less to the `inexpensive_loans` list
 # YOUR CODE HERE!
-
+for loans in loan_costs:
+    
 # @TODO: Print the `inexpensive_loans` list
 # YOUR CODE HERE!
 
 
-"""Part 5: Save the results.
+ """Part 5: Save the results.
 
 Output this list of inexpensive loans to a csv file
     1. Use `with open` to open a new CSV file.
